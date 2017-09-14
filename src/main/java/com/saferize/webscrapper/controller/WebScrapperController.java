@@ -1,6 +1,7 @@
 package com.saferize.webscrapper.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -11,6 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import util.WebScrapperUtil;
 import util.WikiLink;
@@ -40,15 +44,18 @@ public class WebScrapperController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getIt(WikiLink uri) throws IOException {
-		
+//		System.out.println(uri.getLink());
 		WebScrapperUtil util = new WebScrapperUtil();
 		util.openTestSite(uri.getLink());
-		WikiLink wikiLink = new WikiLink();
-		wikiLink.setLink(util.getText());
+		List<String> path = util.getText();
+//		WikiLink wikiLink = new WikiLink();
+//		wikiLink.setLink(util.getText());
 //		path = util.getText();
 		
 //		System.out.println("path response : "+path);
 		
-        return Response.status(Status.OK).entity(wikiLink).build();
+		String json = new Gson().toJson(path);
+		
+        return Response.status(Status.OK).entity(json).build();
     }
 }

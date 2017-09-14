@@ -2,6 +2,7 @@ package util;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,7 +14,7 @@ public class WebScrapperUtil {
 
 	public static WebDriver driver;
 	private static int i = 0;
-	private StringBuffer path = new StringBuffer();
+	private List<String> path = new ArrayList<String>();
 	
 	public WebScrapperUtil(){
 		System.setProperty("webdriver.gecko.driver", "D:\\Softwares\\geckodriver-v0.18.0-win64\\geckodriver.exe");
@@ -26,8 +27,9 @@ public class WebScrapperUtil {
 	public void openTestSite(String uri) {
 //		driver.navigate().to("http://en.wikipedia.org/wiki/Molecule");
 		driver.navigate().to(uri);
+		path.add(driver.findElement(By.tagName("H1")).getText());
 	
-		path = path.insert(0, driver.findElement(By.tagName("H1")).getText());
+//		path = path.insert(0, driver.findElement(By.tagName("H1")).getText());
 	}
 
 	
@@ -38,7 +40,7 @@ public class WebScrapperUtil {
 	 */
 
 	
-	public String getText() throws IOException {
+	public List<String> getText() throws IOException {
 		
 		
 		  // Click the first link that is not in parenthesis, until we're at the Philosophy page
@@ -64,7 +66,7 @@ public class WebScrapperUtil {
         
         
         closeBrowser();
-        return path.toString();
+        return path;
 	}
 
 
@@ -74,7 +76,7 @@ public class WebScrapperUtil {
 	
 	// Clicks the first link the list of links after insuring that 
     // the link text is not inside parenthesis
-    private static void clickFirstViableLink(WebElement firstP, StringBuffer path) {
+    private static void clickFirstViableLink(WebElement firstP, List<String> path) {
 
         // Produce the list of links we can click in the first paragraph
         List<WebElement> links = firstP.findElements(By.xpath("a"));
@@ -87,7 +89,8 @@ public class WebScrapperUtil {
 
             if (  trimmedParagrpah.contains( link.getText() )  ) {  
 
-            	path.insert(path.length()," -> "+link.getText().toString());
+            	path.add(link.getText().toString());
+//            	path.insert(path.length()," -> "+link.getText().toString());
             	System.out.println("***"+link.getText().toString());
                 link.click();
                 return;
