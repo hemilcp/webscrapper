@@ -22,6 +22,7 @@ app.controller('MainCtrl',[
 			}
 //			console.log("Inside");
 
+			$scope.loading = true;
 			$http.post('http://localhost:8080/webscrapper/webapi/webscrapper', data, config)
 			.success(function (data, status, headers, config) {
 				$scope.PostDataResponse = data;
@@ -32,7 +33,10 @@ app.controller('MainCtrl',[
 				"<hr />status: " + status +
 				"<hr />headers: " + header +
 				"<hr />config: " + config;
-			});
+			})
+			.finally(function(){
+				$scope.loading = false;
+			})
 		};
 
 	}]);

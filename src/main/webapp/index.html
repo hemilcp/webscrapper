@@ -38,6 +38,10 @@
 
 				<button type="submit" class="btn btn-primary">Post</button>
 			</form>
+
+      <div>
+        <img id="loadingSpinner" src="giphy.gif" ng-show="loading">
+      </div>
 			<div ng-repeat="x in PostDataResponse">
 				<p>{{x}}</p>
 			</div>
