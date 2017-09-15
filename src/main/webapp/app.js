@@ -7,20 +7,26 @@ app.controller('MainCtrl',[
 
 		$scope.test = 'Hello world!';
 
+		// var randomColor = "background: #" + Math.floor(Math.random()*16777215).toString(16);
+
 		 var colorCodeArray = [
          "#339E42",
+         "#009688",
          "#039BE5",
          "#EF6C00",
-         "#A1887F",
          "#607D8B",
          "#039BE5",
-         "#009688",
+         "#A1887F",
+         
     ];
 
     	$scope.getRandomColor = function($index){
-    		return "background: "+colorCodeArray[$index % colorCodeArray.length];
+    		return "display: inline-block; margin-right: 10px; clear: both; background: "+colorCodeArray[$index % colorCodeArray.length];
     	}
 
+    	// $scope.getRandomColor = function($index){
+    	// 	return "background: #" + Math.floor(Math.random()*16777215).toString(16);
+    	// }
 
    		$scope.findPhilosophy = function(){
 			console.log($scope.wikiLink);

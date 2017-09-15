@@ -45,9 +45,10 @@
 					<img id="loadingSpinner" 
 						src="giphy.gif" width="144px" height="173px" ng-show="loading">
 				</div>
+
 				<div ng-hide="postdata" ng-repeat="x in PostDataResponse" style="{{getRandomColor($index)}}">
-					<div style="margin-bottom: 5px; padding: 10px; text-align: center;">
-						<p>{{x}}</p>
+					<div style="padding: 10px; text-align: center; vertical-align: middle; font-size: 20px">
+						<p >{{x}}</p>
 					</div>
 
 				</div>
