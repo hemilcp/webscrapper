@@ -7,7 +7,22 @@ app.controller('MainCtrl',[
 
 		$scope.test = 'Hello world!';
 
-		$scope.findPhilosophy = function(){
+		 var colorCodeArray = [
+         "#339E42",
+         "#039BE5",
+         "#EF6C00",
+         "#A1887F",
+         "#607D8B",
+         "#039BE5",
+         "#009688",
+    ];
+
+    	$scope.getRandomColor = function($index){
+    		return "background: "+colorCodeArray[$index % colorCodeArray.length];
+    	}
+
+
+   		$scope.findPhilosophy = function(){
 			console.log($scope.wikiLink);
 			var data = {
 					link: $scope.wikiLink

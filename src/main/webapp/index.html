@@ -31,7 +31,7 @@
 				<h3>Add new WikiLink</h3>
 
 				<div class="form-group">
-					<input class="form-control oditek-form" type="url" 
+					<input class="form-control oditek-form" type="url"
 						placeholder="Paste Wikipedia link here" ng-model="wikiLink"
 						required></input>
 				</div>
@@ -39,18 +39,22 @@
 				<button type="submit" class="btn btn-primary">Post</button>
 			</form>
 
-      <div style="width: 100%">
-        
-        <div>
-        <img id="loadingSpinner" style="display:table;margin: 0 auto" src="giphy.gif" width="144px" height="173px"
-          ng-show="loading">
-      </div>
-      <div ng-hide="postdata" ng-repeat="x in PostDataResponse" style="display:table;margin: 0 auto;background-color: #409290">
-        <p>{{x}}</p>
-      </div>
+			<div style="width: 100%" >
 
-      </div>
-			
+				<div style="display: table; margin: 0 auto">
+					<img id="loadingSpinner" 
+						src="giphy.gif" width="144px" height="173px" ng-show="loading">
+				</div>
+				<div ng-hide="postdata" ng-repeat="x in PostDataResponse" style="{{getRandomColor($index)}}">
+					<div style="margin-bottom: 5px; padding: 10px; text-align: center;">
+						<p>{{x}}</p>
+					</div>
+
+				</div>
+
+
+			</div>
+
 		</div>
 
 	</div>
