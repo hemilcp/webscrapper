@@ -41,6 +41,14 @@ public class WebScrapperController {
 	}
 
 
+	/**
+	 * Method POST handles the new wikiLink post requests. It consumes a Java Object 
+	 * WikiLink and produces a Json response. 
+	 * 
+	 * @param uri
+	 * @return
+	 * @throws IOException
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

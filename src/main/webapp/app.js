@@ -25,10 +25,6 @@ app.controller('MainCtrl',[
 			return "display: inline-block; margin: 10px; clear: both; background: "+colorCodeArray[$index % colorCodeArray.length];
 		}
 
-		// $scope.getRandomColor = function($index){
-		// 	return "background: #" + Math.floor(Math.random()*16777215).toString(16);
-		// }
-
 		$scope.findPhilosophy = function(){
 			console.log($scope.wikiLink);
 			var data = {
@@ -42,7 +38,6 @@ app.controller('MainCtrl',[
 						'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
 					}
 			}
-//			console.log("Inside");
 
 			$scope.loading = true;
 			$scope.postdata = true;
