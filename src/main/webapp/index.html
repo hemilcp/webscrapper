@@ -20,7 +20,7 @@
 
 <body ng-app="PhilosophyWiki" ng-controller="MainCtrl">
 
-	<div class="row">
+	<div class="row" text-align="center">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="page-header">
 				<h1>Getting to Philosophy</h1>
@@ -31,7 +31,7 @@
 				<h3>Add new WikiLink</h3>
 
 				<div class="form-group">
-					<input class="form-control" type="text"
+					<input class="form-control oditek-form" type="url" 
 						placeholder="Paste Wikipedia link here" ng-model="wikiLink"
 						required></input>
 				</div>
@@ -39,13 +39,20 @@
 				<button type="submit" class="btn btn-primary">Post</button>
 			</form>
 
-      <div>
-        <img id="loadingSpinner" src="giphy.gif" ng-show="loading">
+      <div style="width: 100%">
+        
+        <div>
+        <img id="loadingSpinner" style="display:table;margin: 0 auto" src="giphy.gif" width="144px" height="173px"
+          ng-show="loading">
       </div>
-			<div ng-repeat="x in PostDataResponse">
-				<p>{{x}}</p>
-			</div>
+      <div ng-hide="postdata" ng-repeat="x in PostDataResponse" style="display:table;margin: 0 auto;background-color: #409290">
+        <p>{{x}}</p>
+      </div>
+
+      </div>
+			
 		</div>
+
 	</div>
 </body>
 </html>

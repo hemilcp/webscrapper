@@ -23,6 +23,8 @@ app.controller('MainCtrl',[
 //			console.log("Inside");
 
 			$scope.loading = true;
+			$scope.postdata = true;
+
 			$http.post('http://localhost:8080/webscrapper/webapi/webscrapper', data, config)
 			.success(function (data, status, headers, config) {
 				$scope.PostDataResponse = data;
@@ -36,6 +38,7 @@ app.controller('MainCtrl',[
 			})
 			.finally(function(){
 				$scope.loading = false;
+				$scope.postdata = false;
 			})
 		};
 
